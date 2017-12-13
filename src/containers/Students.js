@@ -1,22 +1,10 @@
 import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { fetchOneClass, fetchStudents } from '../actions/classes/fetch'
-const evaluationShape = PropTypes.shape({
-  date:  PropTypes.string,
-  color:  PropTypes.string,
-})
-
-const studentShape = PropTypes.shape({
-  fullname: PropTypes.string.isRequired,
-  photo: PropTypes.string.isRequired,
-  evaluations: PropTypes.arrayOf(evaluationShape),
-})
+import StudentItem from './StudentItem'
 
 class Students extends PureComponent{
-  static propTypes = {
-    students: PropTypes.arrayOf(studentShape),
-  }
+
   componentWillMount() {
   const { myClass, fetchOneClass } = this.props
   const { classId } = this.props.match.params
@@ -31,11 +19,16 @@ class Students extends PureComponent{
       this.props.fetchStudents(myClass)
     }
   }
+  renderStudent = (student, index) => {
+    return (
+      <StudentItem key={index} {...student} />
+    )
+  }
   render() {
-    const {students} = this.props.students
+
     return(
       <div className="Students">
-      <p>{students}</p>
+      {this.props.myClass.students.map(this.renderStudent)}
       </div>
     )
   }
