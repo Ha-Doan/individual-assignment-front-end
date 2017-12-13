@@ -1,4 +1,4 @@
-import { FETCHED_CLASSES } from '../actions/classes/fetch'
+import { FETCHED_CLASSES, FETCHED_STUDENTS } from '../actions/classes/fetch'
 
 export default (state = [], { type, payload } = {}) => {
   switch (type) {

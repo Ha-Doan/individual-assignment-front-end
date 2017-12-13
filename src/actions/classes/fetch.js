@@ -8,7 +8,7 @@ import {
 
 
 export const FETCHED_CLASSES = 'FETCHED_CLASSES'
-
+export const FETCHED_STUDENTS = 'FETCHED_STUDENTS'
 
 const api = new API()
 
@@ -24,6 +24,33 @@ export default () => {
         dispatch({
           type: FETCHED_CLASSES,
           payload: result.body
+        })
+      })
+      .catch((error) => {
+        dispatch({ type: APP_DONE_LOADING })
+        dispatch({
+          type: LOAD_ERROR,
+          payload: error.message
+        })
+      })
+  }
+}
+
+export const fetchStudents = (myClass) => {
+  return dispatch => {
+    dispatch({ type: APP_LOADING })
+
+    api.get(`/classes/${myClass._id}`)
+      .then((result) => {
+        dispatch({ type: APP_DONE_LOADING })
+        dispatch({ type: LOAD_SUCCESS })
+
+        dispatch({
+          type: FETCHED_STUDENTS,
+          payload: {
+            myClass,
+            students: result.body
+          }
         })
       })
       .catch((error) => {

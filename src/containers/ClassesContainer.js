@@ -2,14 +2,14 @@ import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import fetchClasses from '../actions/classes/fetch'
 import ClassItem from './ClassItem'
-import CreateClassButton from '../components/classes/CreateClassButton'
+import ClassCreator from '../components/classes/ClassCreator'
 
 class ClassesContainer extends PureComponent{
   componentWillMount() {
     this.props.fetchClasses()
 
   }
-  renderClass(myClass, index) {
+  renderClass = (myClass, index) => {
     return (
       <ClassItem key={index} {...myClass} />
     )
@@ -17,7 +17,7 @@ class ClassesContainer extends PureComponent{
   render() {
     return (
       <div className="ClassesContainer">
-        <CreateClassButton />
+        <ClassCreator />
          {this.props.classes.map(this.renderClass)}
       </div>
     )
