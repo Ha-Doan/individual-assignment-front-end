@@ -16,7 +16,7 @@ export default (newClass) => {
   return (dispatch) => {
     dispatch({ type: APP_LOADING })
 
-    api.post('/classes', {newClass})
+    api.post('/classes', newClass)
       .then((result) => {
         dispatch({ type: APP_DONE_LOADING })
         dispatch({ type: LOAD_SUCCESS })

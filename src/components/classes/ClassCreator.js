@@ -22,6 +22,7 @@ class ClassCreator extends PureComponent {
   submitForm(event) {
     event.preventDefault()
     const newClass = {
+      batch: this.refs.batch.getValue(),
       startDate: this.refs.startDate.getValue(),
       endDate: this.refs.endDate.getValue(),
     }
@@ -32,6 +33,9 @@ class ClassCreator extends PureComponent {
     return (
       <Paper style={ dialogStyle }>
         <form onSubmit={this.submitForm.bind(this)}>
+        <div className="input">
+          <TextField ref="batch" type="batch" hintText="Batch number" />
+        </div>
           <div className="input">
             <TextField ref="startDate" type="startDate" hintText="Start date(yyyy-mm-dd)" />
           </div>

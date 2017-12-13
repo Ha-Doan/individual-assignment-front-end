@@ -3,13 +3,14 @@ import { connect } from 'react-redux'
 import fetchClasses from '../actions/classes/fetch'
 import ClassItem from './ClassItem'
 import ClassCreator from '../components/classes/ClassCreator'
+import './ClassesContainer.css'
 
 class ClassesContainer extends PureComponent{
   componentWillMount() {
     this.props.fetchClasses()
 
   }
-  renderClass = (myClass, index) => {
+  renderClass(myClass, index) {
     return (
       <ClassItem key={index} {...myClass} />
     )
@@ -17,9 +18,14 @@ class ClassesContainer extends PureComponent{
   render() {
     return (
       <div className="ClassesContainer">
+       <header>
         <ClassCreator />
+       </header>
+       <main>
          {this.props.classes.map(this.renderClass)}
+       </main>
       </div>
+
     )
   }
 

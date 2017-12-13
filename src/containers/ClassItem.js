@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import Paper from 'material-ui/Paper'
 
 const evaluationShape = PropTypes.shape({
   date:  PropTypes.string,
@@ -13,23 +14,27 @@ const studentShape = PropTypes.shape({
 })
 
 class ClassItem extends PureComponent{
-
   static propTypes = {
     //fetchOneGame: PropTypes.func.isRequired,
     //fetchPlayers: PropTypes.func.isRequired,
-
-    class: PropTypes.shape({
-      _id: PropTypes.string.isRequired,
       batch: PropTypes.number.isRequired,
       startDate: PropTypes.string.isRequired,
       endDate: PropTypes.string.isRequired,
       students: PropTypes.arrayOf(studentShape),
-    })
   }
   render() {
+    const { _id, batch, startDate, endDate, students } = this.props
+    console.log('in classItem ' + startDate)
+    console.log('Batch in ClassItem ' + batch)
+    if (!_id) return null
     return (
+      <Paper>
       <div className="ClassItem">
+        <p>Batch: #{batch} </p>
+        <p>Start date: {startDate} </p>
+        <p>End date: {endDate} </p>
       </div>
+      </Paper>
     )
   }
 }
