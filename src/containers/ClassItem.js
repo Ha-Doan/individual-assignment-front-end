@@ -15,8 +15,6 @@ const studentShape = PropTypes.shape({
 
 class ClassItem extends PureComponent{
   static propTypes = {
-    //fetchOneGame: PropTypes.func.isRequired,
-    //fetchPlayers: PropTypes.func.isRequired,
       batch: PropTypes.number.isRequired,
       startDate: PropTypes.string.isRequired,
       endDate: PropTypes.string.isRequired,
@@ -24,12 +22,11 @@ class ClassItem extends PureComponent{
   }
   render() {
     const { _id, batch, startDate, endDate, students } = this.props
-    console.log('in classItem ' + startDate)
-    console.log('Batch in ClassItem ' + batch)
+
     if (!_id) return null
     return (
       <Paper>
-      <div className="ClassItem">
+      <div className="ClassItem" onClick={this.props.onClick}>
         <p>Batch: #{batch} </p>
         <p>Start date: {startDate} </p>
         <p>End date: {endDate} </p>

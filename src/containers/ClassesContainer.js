@@ -4,8 +4,8 @@ import fetchClasses, {fetchStudents} from '../actions/classes/fetch'
 import ClassItem from './ClassItem'
 import ClassCreator from '../components/classes/ClassCreator'
 import './ClassesContainer.css'
-import './ClassesContainer.sass'
 import { push } from 'react-router-redux'
+import Students from './Students'
 
 class ClassesContainer extends PureComponent{
   componentWillMount() {
@@ -13,9 +13,9 @@ class ClassesContainer extends PureComponent{
 
   }
   goToStudents = classId => event => this.props.push(`/classes/${classId}`)
-  renderClass(myClass, index) {
-    if (!myClass.students[0].fullname)
-      this.props.fetchStudents(myClass) }
+  renderClass = (myClass, index) => {
+      if (myClass.students.length === 0 )
+          this.props.fetchStudents(myClass)
     return (
       <ClassItem key={index} {...myClass} onClick={this.goToStudents(myClass._id)} />
     )
