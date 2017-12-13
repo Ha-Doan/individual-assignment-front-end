@@ -2,11 +2,11 @@
 import loading from './loading'
 import loadError from './loadError'
 import currentUser from './currentUser'
-//import classes from './classes'
+import classes from './classes'
 
 export default {
+  classes,
+  currentUser,
   loading,
-  loadError,
-  currentUser
-  //classes
+  loadError
 }
