@@ -15,9 +15,17 @@ class StudentItem extends PureComponent {
     evaluations: PropTypes.arrayOf(evaluationShape),
   }
   render() {
+    const { _id, fullname, photo, evaluations } = this.props
+
+    if (!_id) return null
     return(
+      <Paper>
       <div className="StudentItem">
+        <p>Full name: {fullname} </p>
+        <p>Photo: {photo} </p>
+        <p>Evaluation color: {evaluations} </p>
       </div>
+      </Paper>
     )
   }
 

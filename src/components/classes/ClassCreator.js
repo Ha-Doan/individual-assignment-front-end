@@ -1,4 +1,4 @@
-// src/components/games/CreateGameButton.js
+// src/components/classes/ClassCreator.js
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'

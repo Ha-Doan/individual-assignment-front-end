@@ -21,7 +21,6 @@ export default () => {
       .then((result) => {
         dispatch({ type: APP_DONE_LOADING })
         dispatch({ type: LOAD_SUCCESS })
-        console.log('classes : ' + result)
         dispatch({
           type: FETCHED_CLASSES,
           payload: result.body

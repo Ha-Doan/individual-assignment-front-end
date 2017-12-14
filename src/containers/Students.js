@@ -2,7 +2,8 @@ import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import { fetchOneClass, fetchStudents } from '../actions/classes/fetch'
 import StudentItem from './StudentItem'
-
+import StudentCreator from '../components/students/StudentCreator'
+import './Students.css'
 class Students extends PureComponent{
 
   componentWillMount() {
@@ -25,23 +26,24 @@ class Students extends PureComponent{
     )
   }
   render() {
-
+    const {myClass} = this.props
+    if (!myClass) return null
     return(
       <div className="Students">
-      {this.props.myClass.students.map(this.renderStudent)}
+      <header>
+       <StudentCreator classId={this.props.match.params.classId}/>
+      </header>
+      <main>
+          {this.props.myClass.students.map(this.renderStudent)}
+      </main>
       </div>
     )
   }
 }
 
-const mapStateToProps = ({ currentUser, classes }, { match }) => {
-  const myClass = classes.filter((c) => (c._id === match.params.classId))[0]
-  const students = myClass && myClass.students
-
-  return {
-    students,
-    myClass,
-  }
+const mapStateToProps = ({ classes }, { match }) => {
+  const myClass = classes.filter((g) => (g._id === match.params.classId))[0]
+ return {myClass}
 }
 export default connect(mapStateToProps, {
   fetchOneClass,

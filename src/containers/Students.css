@@ -1,0 +1,24 @@
+.Students {
+  margin: 0 auto;
+  width: 100%; }
+  .Students main {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column; }
+    @media (min-width: 1025px) {
+      .Students main {
+        max-width: 1260px;
+        flex-flow: row wrap; } }
+    @media (min-width: 769px) {
+      .Students main {
+        flex-flow: row wrap; } }
+  .Students > header {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    flex: 2 100%; }
+    @media (min-width: 1025px) {
+      .Students > header {
+        max-width: 1260px; }
+        .Students > header h1 {
+          padding: 0 30px; } }
