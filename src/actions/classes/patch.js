@@ -8,9 +8,9 @@ import {
 const api = new API()
 
 export const PATCHED_CLASS = 'PATCHED_CLASS'
-export default (classId, patchedStudent) => {
+export default (classId, patchedStudent, patchType) => {
   return (dispatch) => {
-    api.patch(`/classes/${classId}`, patchedStudent)
+    api.patch(`/classes/${classId}`, {patchedStudent, patchType})
     .then((result) => {
       dispatch({ type: APP_DONE_LOADING })
       dispatch({ type: LOAD_SUCCESS })

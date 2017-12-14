@@ -29,6 +29,7 @@ export default (state = [], { type, payload } = {}) => {
     case PATCHED_CLASS :
       return state.map((myClass) => {
         if (myClass._id === payload._id) {
+          console.log('in reducers ' + Array.isArray(payload.students))
           return { ...payload }
         }
         return myClass

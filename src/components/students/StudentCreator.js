@@ -28,7 +28,7 @@ class StudentCreator extends PureComponent {
       photo: this.refs.photo.getValue(),
     }
     console.log('classId ' + classId)
-    this.props.patchClass(classId, newStudent)
+    this.props.patchClass(classId, newStudent, 'addStudent')
   }
 
   render() {

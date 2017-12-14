@@ -16,7 +16,7 @@ class Students extends PureComponent{
   componentWillReceiveProps(nextProps) {
     const { myClass } = nextProps
 
-    if (myClass && myClass.students.length === 0) {
+    if (myClass && !myClass.students[0]){
       this.props.fetchStudents(myClass)
     }
   }
@@ -28,6 +28,7 @@ class Students extends PureComponent{
   render() {
     const {myClass} = this.props
     if (!myClass) return null
+
     return(
       <div className="Students">
       <header>
@@ -42,9 +43,10 @@ class Students extends PureComponent{
 }
 
 const mapStateToProps = ({ classes }, { match }) => {
-  const myClass = classes.filter((g) => (g._id === match.params.classId))[0]
+ const myClass = classes.filter((g) => (g._id === match.params.classId))[0]
  return {myClass}
 }
+
 export default connect(mapStateToProps, {
   fetchOneClass,
   fetchStudents,

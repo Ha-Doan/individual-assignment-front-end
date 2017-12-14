@@ -10,8 +10,8 @@ const evaluationShape = PropTypes.shape({
 
 class StudentItem extends PureComponent {
   static propTypes = {
-    fullname: PropTypes.string.isRequired,
-    photo: PropTypes.string.isRequired,
+    fullname: PropTypes.string,
+    photo: PropTypes.string,
     evaluations: PropTypes.arrayOf(evaluationShape),
   }
   render() {

@@ -14,8 +14,7 @@ class ClassesContainer extends PureComponent{
   }
   goToStudents = classId => event => this.props.push(`/classes/${classId}`)
   renderClass = (myClass, index) => {
-      if (myClass.students.length === 0 )
-          this.props.fetchStudents(myClass)
+
     return (
       <ClassItem key={index} {...myClass} onClick={this.goToStudents(myClass._id)} />
     )
