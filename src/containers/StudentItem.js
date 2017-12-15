@@ -29,7 +29,9 @@ class StudentItem extends PureComponent {
   removeStudent = () => {
 
      const classId  = this.props.classId
-     const removedStudent = {}
+     const removedStudent = {
+       id: this.props._id,
+     }
      this.props.patchClass(classId, removedStudent, 'removeStudent')
   }
   submitForm(event) {
@@ -76,6 +78,7 @@ class StudentItem extends PureComponent {
         <RaisedButton
         label="Remove"
         primary={true}
+        onClick={this.removeStudent.bind(this)}
         icon={<StarIcon />} />
         </div>
       </Paper>
