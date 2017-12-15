@@ -22,7 +22,7 @@ class Students extends PureComponent{
   }
   renderStudent = (student, index) => {
     return (
-      <StudentItem key={index} {...student} />
+      <StudentItem key={index} {...student} classId={this.props.match.params.classId}/>
     )
   }
   render() {
